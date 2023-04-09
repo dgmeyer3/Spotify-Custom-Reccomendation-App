@@ -1,18 +1,14 @@
 # Spotify-Custom-Reccomendation-Tool (SCRT)
 
-Write a short sentence or two about this project and what it does. Be sure to include a link and a screenshot (we're front end devs so we can actually see our work!).
-
 This project is a playback tool for Spotify that allows users to directly reccomend songs based off of properties defined in the SpotiPy library. By adjusting the sliders on the bottom section of the webpage, a song with similar properties will be queued!. Users can also take advantage of the playback controls & song queue list directly in the app. 
 
 **Link to project:** (include github link when it loads)
 
-![alt tag](http://placecorgi.com/1200/650)
+
 
 ## How It's Made:
 
 **Tech used:** HTML, CSS, JavaScript, Jquery, Python, Flask, SpotiPy library
-
-Here's where you can go to town on how you actually built this thing. Write as much as you can here, it's totally fine if it's not too much just make sure you write *something*. If you don't have too much experience on your resume working on the front end that's totally fine. This is where you can really show off your passion and make up for that ten fold.
 
 SpotipyHandler.py is an API that creates an object that allows the frontend to easily call the SpotiPy library. This gives SCRT access to the users Spotify account, so it is able to control playback + reccoemend songs. **users must enter their own Oauth2 client_id, client_secret, username, and redirect. Client_id & client_secret tokens can be created by following the steps here: https://spotipy.readthedocs.io/en/2.11.1/ **
 
@@ -22,8 +18,6 @@ For the Frontend, I took inspiration from the layout on https://chess.com! while
 
 ## Optimizations
 *(optional)*
-
-You don't have to include this section but interviewers *love* that you can not only deliver a final product that looks great but also functions efficiently. Did you write something then refactor it later and the result was 5x faster than the original implementation? Did you cache your assets? Things that you write in this section are **GREAT** to bring up in interviews and you can use this section as reference when studying for technical interviews!
 
 -Sliders appeared much differently on chrome as they did on Firefox, my native browser. This was fixed by using webkit to edit the slier appearance for chrome. While the sliders still look different across browsers, all appearances now fit within the style of the app. 
 
@@ -44,7 +38,23 @@ No matter what your experience level, being an engineer means continuously learn
 
 ## Examples:
 
-**Show user how to use things on the page**
 
+Upon the document loading, you may recieve this error:
 
+![image](https://user-images.githubusercontent.com/90935162/230799665-13cf1cd1-ea0c-407f-b955-63ac3903aa2f.png)
+
+Currently, SCRT can not activate a spotify session. To activate a session, please launch Spotify on a device that the user is logged in to, and the application should load successfully. As mentioned above, client tokens + username + redirect must be manually added to SpotipyHandler.py for the application to work.
+
+Play, Pause, Next, Previous buttons: These are simple playback controls that act the same as they would in the spotify app. They also update album cover/song name/artist name within SCRT. 
+
+The queue list takes a unique spotify track uri and adds it to the list below.
+![image](https://user-images.githubusercontent.com/90935162/230799532-15424147-14f5-4dc8-9b7e-9949716e4270.png)
+
+The uri must be in the correct format (ex: spotify:track:7lEptt4wbM0yJTvSG5EBof), or the webpage will throw an error:
+
+![image](https://user-images.githubusercontent.com/90935162/230799635-90b15e03-1d95-4b84-8715-e6c70a6f758a.png)
+
+To queue the added songs, press "Seed URI". 
+
+The sliders on the bottom of the controller can are used for the reccomend function. move the sliders to your preferred setting, and press submit to queue a song with those desired properties. Please note, this function will reccomend a song similar to the one currently playing. 
 
