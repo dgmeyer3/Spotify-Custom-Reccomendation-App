@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="static/styles/style.css">
+    <title>Jacked | Web Player</title>
+</head>
+    <body>
+        <div class="baseContainer" id="mainDiv">
+            <div class = "gridContainer">
+                <div class="flexContainer">
+                    <div class="indexBlock">
+                        <div class="indexLeft">
+                            <div class="innerIndex">
+                                <img id="albumDisplay" src="static/white.jpg">
+                                <h1 id="songName"></h1>
+                                <h3 id="artistName">artist name</h3>
+                                <div class="buttonContainer">
+
+                                    <form id="form1" class="submitForm" >
+                                        <button href=# class="playbackButton" type="submit" value="previous"><img src="static/skip-previous-regular-24.png" id="previous"></button>
+                                        <div class="playPauseContainer">
+                                            <button href=# class="playbackButton" type="submit" value="pause"><img src="static/pause-regular-24.png" id="pause"></button>
+                                            <button href=# class="playbackButton" type="submit" value="play"><img src="static/play-regular-24.png" id="play"></button>
+                                        </div>
+                                        <button href=# class="playbackButton" type="submit" value="next"><img src="static/skip-next-regular-24.png" id="next"></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="indexRight">
+                            <div class="innerIndex">
+                                <div class="testDiv">
+                                    <form id="info"> Enter a URI:
+                                        <input id="uriInputID" type="text"></input><span><button id="uriButton">Enter</button></span>
+                                    </form>
+                                    <ul class = seedList id="seedListArea">
+                                        
+                                    </ul>
+                                </div>
+                                    <div class="seedButtonContainer">
+                                        <form id="seedForm">
+                                            <button class="seedButton" id="seed">SEED URI</button>
+                                            <button class="seedButton" id="clearButton">CLEAR</button>
+                                        </form>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="indexBlock lowerBlock">
+                        <div class="indexTop">
+                            <div class="indexLeft">
+                                <div class="innerIndex sliderIndex">
+                                    <div class="sliderContainer">
+                                        <form class="sliderForm" oninput="result.value=range.value + 'BPM'">
+                                            <label for="range">
+                                                Tempo
+                                            </label>
+                                            <input type="range" name="range" class="slider" min="1" max="200" value="0" />
+                                            <output name="result" id="bpmOutput">BPM</output>
+                                        </form>
+                                    </div>
+                                    <div class="sliderContainer">
+                                        <form class="sliderForm" oninput="result.value=range.value + ' Danceability'">
+                                            <label for="range">
+                                                Danceability
+                                            </label>
+                                            <input type="range" name="range" class="slider" min="0" max="1" value="0" step=".001" />
+                                            <output name="result" id="danceOutput">Danceability</output>
+                                        </form>
+                                    </div>
+                                    <div class="sliderContainer">
+                                        <form class="sliderForm" oninput="result.value=range.value + ' Energy'">
+                                            <label for="range">
+                                                Energy
+                                            </label>
+                                            <input type="range" name="range" class="slider" min="0" max="1" value="0" step=".001" />
+                                            <output name="result" id="energyOutput">Energy</output>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="indexRight">
+                                <div class="innerIndex sliderIndex">
+                                    <div class="sliderContainer">
+                                        <form class="sliderForm"  oninput="result.value=range.value + ' units'">
+                                            <label for="range">
+                                                Liveness
+                                            </label>
+                                            <input type="range" id="Slider1" name="range" class="slider" min="0" max="1" value="0" step=".001" />
+                                            <output name="result" id="liveOutput">Liveness</output>
+                                        </form>
+                                    </div>
+                                    <div class="sliderContainer">
+                                        <form class="sliderForm" oninput="result.value=range.value + ' units'">
+                                            <label for="range">
+                                                Instrumentalness
+                                            </label>
+                                            <input type="range" name="range" class="slider" min="0" max="1" value="0" step=".001" />
+                                            <output name="result" id="instOutput">Instrumentalness</output>
+                                        </form>
+                                    </div>
+                                    <div class="sliderContainer">
+                                        <form class="sliderForm" oninput="result.value=range.value + ' units'">
+                                            <label for="range">
+                                                Extra
+                                            </label>
+                                            <input type="range" name="range" class="slider" min="0" max="1" value="0" step=".001" />
+                                            <output name="result" id="extraOutput">unit</output>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="indexBottom">
+                            <form id="sliderForm">
+                                <button class='seedButton' id="submit" value="submit">SUBMIT</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+        <script type="text/javascript" src="static/script/script.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>
+
+            //global variable stores button value. functions separated because sliders were technically always 
+            //the active element. im so sorry.
+            var pressedButton ="didnt update";
+
+            $("button").click(function() {
+                var fired_button = $(this).val();
+                pressedButton = fired_button;
+            });
+
+             //submit playback commands to flask
+            $(".submitForm").on("submit", function (e){
+                e.preventDefault()
+                var activeButton = pressedButton;
+
+                flaskSubmit(e,activeButton);
+            });
+
+            //get album art and artist name on doc load
+            $(document).ready(function (e){
+                onLoad = "load"
+                flaskSubmit(e,onLoad);
+            });
+
+            function flaskSubmit(e,activeButton){
+
+                $.ajax({
+                    url: activeButton,
+                    type: "POST",
+                    data: {Instruction: activeButton},
+                    dataType: "json",
+                    success: function(result){
+
+                        if(result.notification == "load" || result.notification == "next" || result.notification == "previous"){
+                    
+                            var albumArt = result.albumCover;
+                            var songName = result.title;
+                            var artistName = result.artist;
+
+                            $("#albumDisplay").attr("src",albumArt);
+                            $("#songName").html(songName);
+                            $("#artistName").html(artistName);
+                        }
+                        else if(result.notification == "inactive"){
+                            alert("no active device was found!");
+                        }
+                    },
+                    error: function(result){
+                        alert(result.notification);
+                    }
+                });
+            };
+            //for seed area submissions. Array splitting done in flask
+            $("#seedForm").on("submit", function(e){
+                
+                e.preventDefault()
+                //alert(uriArray);
+
+                $.ajax({
+                    url:"queue",
+                    type: "POST",
+                    data: {Instruction: "uriArrayFlag", seedArray: uriArray},
+                    success: function(result){
+                        if(result.notification == "Invalid URI"){
+                            alert("One or more of the URIs entered were Invalid.");
+                            $("#seedListArea").empty();
+                        }
+                        else{
+                            alert(result.notification);
+                        }
+                    },
+                    failure: function(result){
+                        alert("test");
+                    }
+                })
+            });
+
+            //save slider values to array 
+            $("#sliderForm").on("click", function (e){
+                
+                e.preventDefault();
+                var propertiesArray = [$("#bpmOutput").val(), $("#danceOutput").val(), $("#energyOutput").val(), $("#liveOutput").val(),
+                $("#instOutput").val(), $("#extraOutput").val()];
+
+                var parsedArray = propertiesArray.map(function(x){ 
+                    return parseFloat(x, 10); 
+                });
+                alert(parsedArray);
+
+                $.ajax({
+                    method:"POST",
+                    url:"reccomend",
+                    data:{Instruction: "propArrayFlag", propertyArray: parsedArray},
+                    dataType:"json",
+                    success: function(result){
+                        alert(result.notification)
+                    },
+                    failure: function(result){
+                        alert(result.notification)
+                    }
+                });
+             });
+
+        </script>
+    </body>
+</html>
+
