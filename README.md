@@ -17,7 +17,6 @@ The project utilized a flask server to call the python API. additionally, Jquery
 For the Frontend, I took inspiration from the layout on https://chess.com! while the page ended up looking very different, the core layout of a flexbox within a grid allowed me to create a very standardized box layout. The page also flexes well, and works down to a minium width of a vertically standing monitor. CSS has been modified such that the display looks good across the main three browsers (Chrome, Firefox and Safari), with a standardized color/font pallate.
 
 ## Optimizations
-*(optional)*
 
 -Sliders appeared much differently on chrome as they did on Firefox, my native browser. This was fixed by using webkit to edit the slier appearance for chrome. While the sliders still look different across browsers, all appearances now fit within the style of the app. 
 
