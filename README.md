@@ -26,8 +26,6 @@ For the Frontend, I took inspiration from the layout on https://chess.com! while
 
 ## Lessons Learned:
 
-No matter what your experience level, being an engineer means continuously learning. Every time you build something you always have those *whoa this is awesome* or *fuck yeah I did it!* moments. This is where you should share those moments! Recruiters and interviewers love to see that you're self-aware and passionate about growing.
-
 -The biggest difficulty I had with this project was using Jquery and Ajax to send information from the webpage to flas. While I was familiar with how to send data to flask, doing so without the page refreshing was an interesting challenge to overcome. $.ajax() is a very powerful tool and it was a great experience learning how to properly send a json back and forth between a server. 
 
 -This project began was a few hours of learning how to use Oauth2 with Spotify, and providing my application with Spotify access correctly. In addition to exporting my own credentials, SpotiPy has a number of different access levels, each allowing the API to call certain functions. 
