@@ -2,8 +2,6 @@
 
 This project is a playback tool for Spotify that allows users to directly reccomend songs based off of properties defined in the SpotiPy library. By adjusting the sliders on the bottom section of the webpage, a song with similar properties will be queued!. Users can also take advantage of the playback controls & song queue list directly in the app. 
 
-**Link to project:** (include github link when it loads)
-
 
 
 ## How It's Made:
@@ -14,7 +12,7 @@ SpotipyHandler.py is an API that creates an object that allows the frontend to e
 
 The project utilized a flask server to call the python API. additionally, Jquery & Ajax are used to send information from the webpage itsself to flask, without refreshing the page.
 
-For the Frontend, I took inspiration from the layout on https://chess.com! while the page ended up looking very different, the core layout of a flexbox within a grid allowed me to create a very standardized box layout. The page also flexes well, and works down to a minium width of a vertically standing monitor. CSS has been modified such that the display looks good across the main three browsers (Chrome, Firefox and Safari), with a standardized color/font pallate.
+For the Frontend, I took inspiration from the layout on https://chess.com. while the page ended up looking very different, the core layout of a flexbox within a grid allowed me to create a very standardized box layout. The page also flexes well, and works down to a minium width of a vertically standing monitor. CSS has been modified such that the display looks good across the main three browsers (Chrome, Firefox and Safari), with a standardized color/font pallate.
 
 ## Optimizations
 
@@ -30,7 +28,7 @@ For the Frontend, I took inspiration from the layout on https://chess.com! while
 
 -This project began was a few hours of learning how to use Oauth2 with Spotify, and providing my application with Spotify access correctly. In addition to exporting my own credentials, SpotiPy has a number of different access levels, each allowing the API to call certain functions. 
 
--sp.audio_features gave a broad spectrum of information that was difficult to decode at first. Everything I could want to know about a song on spotify is stored there, but parsing it was not easy. It was always a relief to see that the correct information had displayed on the webpage, and not an abomination of json & special characters!
+-sp.audio_features gave a broad spectrum of information that was difficult to decode at first. Everything I could want to know about a song on spotify is stored there, but parsing it was not easy. It was always a relief to see that the correct information had displayed on the webpage, and not an abomination of json & special characters.
 
 
 ## Examples:
