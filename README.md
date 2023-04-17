@@ -8,7 +8,7 @@ This project is a playback tool for Spotify that allows users to directly reccom
 
 **Tech used:** HTML, CSS, JavaScript, Jquery, Python, Flask, SpotiPy library
 
-SpotipyHandler.py is an API that creates an object that allows the frontend to easily call the SpotiPy library. This gives SCRT access to the users Spotify account, so it is able to control playback + reccoemend songs. **users must enter their own Oauth2 client_id, client_secret, username, and redirect. Client_id & client_secret tokens can be created by following the steps here: ** https://spotipy.readthedocs.io/en/2.11.1/ **
+SpotipyHandler.py is an API that creates an object that allows the frontend to easily call the SpotiPy library. This gives SCRT access to the users Spotify account, so it is able to control playback + reccoemend songs. **users must enter their own Oauth2 client_id, client_secret, username, and redirect. Client_id & client_secret tokens can be created by following the steps here: https://spotipy.readthedocs.io/en/2.11.1/**
 
 The project utilized a flask server to call the python API. additionally, Jquery & Ajax are used to send information from the webpage itsself to flask, without refreshing the page.
 
