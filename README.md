@@ -1,4 +1,4 @@
-# Spotify-Custom-Reccomendation-Tool (SCRT)
+# Spotify-Custom-Reccomendation-Tool
 
 This project is a playback tool for Spotify that allows users to directly reccomend songs based off of properties defined in the SpotiPy library. By adjusting the sliders on the bottom section of the webpage, a song with similar properties will be queued!. Users can also take advantage of the playback controls & song queue list directly in the app. 
 
