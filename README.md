@@ -3,7 +3,6 @@
 This project is a playback tool for Spotify that allows users to directly reccomend songs based off of properties defined in the SpotiPy library. By adjusting the sliders on the bottom section of the webpage, a song with similar properties will be queued!. Users can also take advantage of the playback controls & song queue list directly in the app. 
 
 
-
 ## How It's Made:
 
 **Tech used:** HTML, CSS, JavaScript, Jquery, Python, Flask, SpotiPy library
@@ -14,6 +13,7 @@ The project utilized a flask server to call the python API. additionally, Jquery
 
 For the Frontend, I took inspiration from the layout on https://chess.com. while the page ended up looking very different, the core layout of a flexbox within a grid allowed me to create a very standardized box layout. The page also flexes well, and works down to a minium width of a vertically standing monitor. CSS has been modified such that the display looks good across the main three browsers (Chrome, Firefox and Safari), with a standardized color/font pallate.
 
+
 ## Optimizations
 
 -Sliders appeared much differently on chrome as they did on Firefox, my native browser. This was fixed by using webkit to edit the slier appearance for chrome. While the sliders still look different across browsers, all appearances now fit within the style of the app. 
@@ -21,6 +21,7 @@ For the Frontend, I took inspiration from the layout on https://chess.com. while
 -**div that appears when you hover over album cover, displaying the songs properties** : This will be pushed to the main build soon, but I wanted to provide users (and myself) with easier access to the songs properties (liveness, BPM, energy, etc). Instead of checking the terminal & reading through all of the songs information, the relevant traits are now displayed by hovering over the album.
 
 -**toggleable play/pause button** : also will be pushed in the next update. Quality of life feature that also fixed a bug where SCRT would attempt to pause a song that was already paused, throwing an error.
+
 
 ## Lessons Learned:
 
@@ -32,7 +33,6 @@ For the Frontend, I took inspiration from the layout on https://chess.com. while
 
 
 ## Examples:
-
 
 Upon the document loading, you may recieve this error:
 
